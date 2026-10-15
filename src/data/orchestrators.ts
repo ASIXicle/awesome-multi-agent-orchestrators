@@ -270,6 +270,18 @@ export const orchestrationTools: OrchestrationToolEntry[] = [
     note:
       "Gives each task its own worktree, terminal, browser, and diff review, with optional Docker or Apple container, SSH-host, or cloud-sandbox isolation and Manager Agents that start and steer other agents through the dev CLI; tracked as a session workspace rather than an orchestrator runtime.",
     tags: ["CLI sessions", "worktrees", "coding agents", "macOS"]
+  },
+  {
+    slug: "alchemist-coder",
+    title: "Alchemist Coder",
+    url: "https://github.com/Alekla0126/alchemist-coder",
+    sourceName: "Alchemist Coder GitHub README",
+    mark: "Alc",
+    summary:
+      "AGPL-3.0 desktop app for running Claude Code and Codex over ACP, following each agent's subagent tree live, and letting several agents solve one plan in separate git worktrees.",
+    note:
+      "Runs on macOS, Windows, and Linux; its Arena has one to four agents solve the same approved plan in their own worktrees before you merge one, a standing coordinator hands assignments to an organization of agents, and it indexes Claude Code, Codex, Gemini CLI, and Grok Build history into a read-only local search; the free Community edition runs agents only on local models, so it is tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "worktrees", "coding agents", "ACP", "desktop", "AGPL-3.0"]
   }
 ];
 
