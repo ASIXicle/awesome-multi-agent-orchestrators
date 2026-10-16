@@ -3130,5 +3130,43 @@ export const orchestrators: OrchestratorEntry[] = [
       ctaHref: agentAnalyticsSignupHref("tale"),
       screenshots: []
     }
+  },
+  {
+    slug: "yylo",
+    rank: 41,
+    title: "YYLO",
+    githubRepo: "yylo-dev/yylo",
+    accent: "emerald",
+    mark: { kind: "monogram", value: "Yy", label: "YYLO monogram" },
+    summary: "A command-line orchestrator that runs coding agents through a typed task lifecycle with isolated worktrees, validation gates, and Git-protected merges.",
+    note: "Coordinates CLI subagents such as Pi and Codex across task start, task finish, and merge land steps while keeping controller metadata, run receipts, and product bytes in separate authorities.",
+    overview: [
+      "YYLO is an MIT-licensed command-line orchestrator for coding agents, repeatable workflows, and receipt-backed repository changes. It installs from npm as @yylo/cli and exposes equivalent yylo and yy launchers.",
+      "task start freezes the protected target SHA, creates a dedicated branch and worktree, and completes configured dependency hydration before reporting WORKING; implementation and focused tests happen in that worktree, task finish verifies delivery, and merge land composes the change in a detached candidate using Git expected-old ref protection.",
+      "Task and Kanban state, Record storage, and evaluation evidence live in the separate YYLO Ledger and YYLO Benchmark packages; yy ledger and yy benchmark delegate to those independently installed CLIs rather than bundling alternate implementations."
+    ],
+    bestFor: ["Typed task lifecycles for coding agents", "Isolated per-task worktrees", "Git-protected merge orchestration"],
+    tags: ["coding agents", "CLI", "worktrees", "merge orchestration", "MIT"],
+    links: [
+      { label: "Website", href: "https://yylo.dev/", emphasis: "primary" },
+      { label: "GitHub", href: "https://github.com/yylo-dev/yylo" },
+      { label: "npm", href: "https://www.npmjs.com/package/@yylo/cli" }
+    ],
+    screenshots: [],
+    agentAnalytics: {
+      heading: "Measure outcomes from YYLO-orchestrated work",
+      valueProp: "YYLO records task runs, receipts, and merge results. Separately configured analytics can help a team assess a deployed change's user-facing results.",
+      measurementLoop: [
+        "a team uses YYLO to run a coding-agent task and land the reviewed change",
+        "the team deploys the change to a separately instrumented surface",
+        "a human or an agent with separately configured analytics access reads the observed results",
+        "the team uses that evidence when deciding on the next task"
+      ],
+      setupNotes: "This is an optional workflow, not a built-in YYLO integration with Agent Analytics. Configure tracking on the deployed product and analytics access separately; YYLO does not install tracking or send its run receipts to Agent Analytics.",
+      prompt: "If analytics access and tracking are already configured, inspect the deployed change's observation window and report measured user outcomes. Otherwise, explain what is missing. Do not imply a native YYLO integration or infer causation from a before-and-after comparison alone.",
+      ctaLabel: "Explore outcome measurement",
+      ctaHref: agentAnalyticsSignupHref("yylo"),
+      screenshots: []
+    }
   }
 ];
