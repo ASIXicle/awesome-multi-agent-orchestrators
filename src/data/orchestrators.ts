@@ -270,6 +270,54 @@ export const orchestrationTools: OrchestrationToolEntry[] = [
     note:
       "Gives each task its own worktree, terminal, browser, and diff review, with optional Docker or Apple container, SSH-host, or cloud-sandbox isolation and Manager Agents that start and steer other agents through the dev CLI; tracked as a session workspace rather than an orchestrator runtime.",
     tags: ["CLI sessions", "worktrees", "coding agents", "macOS"]
+  },
+  {
+    slug: "spaceapp",
+    title: "SpaceApp",
+    url: "https://spaceapp.dev/",
+    sourceName: "SpaceApp README, docs, and website",
+    mark: "Sp",
+    summary:
+      "Source-available (BSL 1.1), self-hosted web workspace for running OpenCode, Codex, Claude Code, Gemini CLI, and other coding-agent CLIs side by side in persistent rooms.",
+    note:
+      "Runs each CLI as a terminal pane in a room that keeps its sessions, with MCP servers, managed browser panes, and a Room Agent for coordinating work across panes; installs with one npx command on Docker (Linux, macOS, Windows 11); tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "coding agents", "self-hosted", "Docker", "BSL-1.1"]
+  },
+  {
+    slug: "alchemist-coder",
+    title: "Alchemist Coder",
+    url: "https://github.com/Alekla0126/alchemist-coder",
+    sourceName: "Alchemist Coder GitHub README",
+    mark: "Alc",
+    summary:
+      "AGPL-3.0 desktop app for running Claude Code and Codex over ACP, following each agent's subagent tree live, and letting several agents solve one plan in separate git worktrees.",
+    note:
+      "Runs on macOS, Windows, and Linux; its Arena has one to four agents solve the same approved plan in their own worktrees before you merge one, a standing coordinator hands assignments to an organization of agents, and it indexes Claude Code, Codex, Gemini CLI, and Grok Build history into a read-only local search; the free Community edition runs agents only on local models, so it is tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "worktrees", "coding agents", "ACP", "desktop", "AGPL-3.0"]
+  },
+  {
+    slug: "grove",
+    title: "Grove",
+    url: "https://github.com/efim0v/grove",
+    sourceName: "Grove GitHub repository and website",
+    mark: "Gr",
+    summary:
+      "GPL-3.0 macOS menu-bar app and CLI for running parallel Claude Code sessions on a multi-repo project, with one workspace per feature that holds a git worktree of each chosen repository on one branch.",
+    note:
+      "Also shows Claude Code sessions across projects and accounts and moves a session to another Claude account; requires macOS 26+ on Apple silicon, builds are signed ad hoc and not notarized, and it is tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "worktrees", "multi-repo", "Claude Code", "macOS", "GPL-3.0"]
+  },
+  {
+    slug: "superagent",
+    title: "SuperAgent",
+    url: "https://superagent.computer/",
+    sourceName: "SuperAgent website and GitHub repository",
+    mark: "SA",
+    summary:
+      "MIT-licensed macOS workspace where Claude Code and Codex run as per-project chats, each on its own git worktree.",
+    note:
+      "Each chat gets a real browser the agent drives on the user's existing logins, a dedicated iOS Simulator for build-install-screenshot loops, a board the agent maintains, scheduled routines, and an iPhone companion paired over an end-to-end encrypted relay for approving tool calls remotely. Runs locally on the user's own Claude or OpenAI subscription; tracked as a CLI-agent session workspace rather than an orchestrator runtime.",
+    tags: ["open source", "CLI sessions", "worktrees", "browser", "iOS simulator", "macOS"]
   }
 ];
 
@@ -3128,6 +3176,44 @@ export const orchestrators: OrchestratorEntry[] = [
       prompt: "If tracking and analytics access are already configured for the deployed change, report measured user outcomes for the observation window with their limitations. Otherwise, identify what is missing. Do not assume a native Tale integration or infer causation from a before-and-after comparison alone.",
       ctaLabel: "Explore outcome measurement",
       ctaHref: agentAnalyticsSignupHref("tale"),
+      screenshots: []
+    }
+  },
+  {
+    slug: "yylo",
+    rank: 41,
+    title: "YYLO",
+    githubRepo: "yylo-dev/yylo",
+    accent: "emerald",
+    mark: { kind: "monogram", value: "Yy", label: "YYLO monogram" },
+    summary: "A command-line orchestrator that runs coding agents through a typed task lifecycle with isolated worktrees, validation gates, and Git-protected merges.",
+    note: "Coordinates CLI subagents such as Pi and Codex across task start, task finish, and merge land steps while keeping controller metadata, run receipts, and product bytes in separate authorities.",
+    overview: [
+      "YYLO is an MIT-licensed command-line orchestrator for coding agents, repeatable workflows, and receipt-backed repository changes. It installs from npm as @yylo/cli and exposes equivalent yylo and yy launchers.",
+      "task start freezes the protected target SHA, creates a dedicated branch and worktree, and completes configured dependency hydration before reporting WORKING; implementation and focused tests happen in that worktree, task finish verifies delivery, and merge land composes the change in a detached candidate using Git expected-old ref protection.",
+      "Task and Kanban state, Record storage, and evaluation evidence live in the separate YYLO Ledger and YYLO Benchmark packages; yy ledger and yy benchmark delegate to those independently installed CLIs rather than bundling alternate implementations."
+    ],
+    bestFor: ["Typed task lifecycles for coding agents", "Isolated per-task worktrees", "Git-protected merge orchestration"],
+    tags: ["coding agents", "CLI", "worktrees", "merge orchestration", "MIT"],
+    links: [
+      { label: "Website", href: "https://yylo.dev/", emphasis: "primary" },
+      { label: "GitHub", href: "https://github.com/yylo-dev/yylo" },
+      { label: "npm", href: "https://www.npmjs.com/package/@yylo/cli" }
+    ],
+    screenshots: [],
+    agentAnalytics: {
+      heading: "Measure outcomes from YYLO-orchestrated work",
+      valueProp: "YYLO records task runs, receipts, and merge results. Separately configured analytics can help a team assess a deployed change's user-facing results.",
+      measurementLoop: [
+        "a team uses YYLO to run a coding-agent task and land the reviewed change",
+        "the team deploys the change to a separately instrumented surface",
+        "a human or an agent with separately configured analytics access reads the observed results",
+        "the team uses that evidence when deciding on the next task"
+      ],
+      setupNotes: "This is an optional workflow, not a built-in YYLO integration with Agent Analytics. Configure tracking on the deployed product and analytics access separately; YYLO does not install tracking or send its run receipts to Agent Analytics.",
+      prompt: "If analytics access and tracking are already configured, inspect the deployed change's observation window and report measured user outcomes. Otherwise, explain what is missing. Do not imply a native YYLO integration or infer causation from a before-and-after comparison alone.",
+      ctaLabel: "Explore outcome measurement",
+      ctaHref: agentAnalyticsSignupHref("yylo"),
       screenshots: []
     }
   }
