@@ -282,6 +282,30 @@ export const orchestrationTools: OrchestrationToolEntry[] = [
     note:
       "Runs on macOS, Windows, and Linux; its Arena has one to four agents solve the same approved plan in their own worktrees before you merge one, a standing coordinator hands assignments to an organization of agents, and it indexes Claude Code, Codex, Gemini CLI, and Grok Build history into a read-only local search; the free Community edition runs agents only on local models, so it is tracked as a session workspace rather than an orchestrator runtime.",
     tags: ["CLI sessions", "worktrees", "coding agents", "ACP", "desktop", "AGPL-3.0"]
+  },
+  {
+    slug: "grove",
+    title: "Grove",
+    url: "https://github.com/efim0v/grove",
+    sourceName: "Grove GitHub repository and website",
+    mark: "Gr",
+    summary:
+      "GPL-3.0 macOS menu-bar app and CLI for running parallel Claude Code sessions on a multi-repo project, with one workspace per feature that holds a git worktree of each chosen repository on one branch.",
+    note:
+      "Also shows Claude Code sessions across projects and accounts and moves a session to another Claude account; requires macOS 26+ on Apple silicon, builds are signed ad hoc and not notarized, and it is tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "worktrees", "multi-repo", "Claude Code", "macOS", "GPL-3.0"]
+  },
+  {
+    slug: "superagent",
+    title: "SuperAgent",
+    url: "https://superagent.computer/",
+    sourceName: "SuperAgent website and GitHub repository",
+    mark: "SA",
+    summary:
+      "MIT-licensed macOS workspace where Claude Code and Codex run as per-project chats, each on its own git worktree.",
+    note:
+      "Each chat gets a real browser the agent drives on the user's existing logins, a dedicated iOS Simulator for build-install-screenshot loops, a board the agent maintains, scheduled routines, and an iPhone companion paired over an end-to-end encrypted relay for approving tool calls remotely. Runs locally on the user's own Claude or OpenAI subscription; tracked as a CLI-agent session workspace rather than an orchestrator runtime.",
+    tags: ["open source", "CLI sessions", "worktrees", "browser", "iOS simulator", "macOS"]
   }
 ];
 
