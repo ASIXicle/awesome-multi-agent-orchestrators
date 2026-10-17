@@ -272,6 +272,18 @@ export const orchestrationTools: OrchestrationToolEntry[] = [
     tags: ["CLI sessions", "worktrees", "coding agents", "macOS"]
   },
   {
+    slug: "spaceapp",
+    title: "SpaceApp",
+    url: "https://spaceapp.dev/",
+    sourceName: "SpaceApp README, docs, and website",
+    mark: "Sp",
+    summary:
+      "Source-available (BSL 1.1), self-hosted web workspace for running OpenCode, Codex, Claude Code, Gemini CLI, and other coding-agent CLIs side by side in persistent rooms.",
+    note:
+      "Runs each CLI as a terminal pane in a room that keeps its sessions, with MCP servers, managed browser panes, and a Room Agent for coordinating work across panes; installs with one npx command on Docker (Linux, macOS, Windows 11); tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "coding agents", "self-hosted", "Docker", "BSL-1.1"]
+  },
+  {
     slug: "alchemist-coder",
     title: "Alchemist Coder",
     url: "https://github.com/Alekla0126/alchemist-coder",
