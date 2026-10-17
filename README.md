@@ -207,11 +207,13 @@ Before submitting a pull request, please star this repository.
 
 Pull requests are welcome if the project clearly fits the directory scope.
 
-- Add or update entries in [`src/data/orchestrators.ts`](./src/data/orchestrators.ts).
+- Listing submissions only need to add or update a bullet in the appropriate README category; new projects may also appear in Latest Additions.
 - Prefer official website, docs, and GitHub links.
 - Keep summaries factual, concise, and based on public sources.
 - For governance and enforcement entries, state whether the source is open source, open-core, commercial, or a platform feature.
 - If you add a project, include the source you used to verify it.
+
+Maintainers handle website data and validation separately. Contributors do not need to edit `src/data/orchestrators.ts`, install dependencies, run website tests, or preview the website locally for a listing submission.
 
 See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the full review criteria.
 
@@ -225,6 +227,6 @@ npm install
 npm run dev
 ```
 
-Most editorial updates should happen in [`src/data/orchestrators.ts`](./src/data/orchestrators.ts), which is the source of truth for directory entries, rank order, notes, tags, and links.
+Maintainers keep the website data in [`src/data/orchestrators.ts`](./src/data/orchestrators.ts), which controls website directory entries, rank order, notes, tags, and links. README-only listing contributions do not require website changes.
 
 News updates should happen in [`src/content/news`](./src/content/news). Directory entries and news posts are intentionally separate: directory metadata describes the player; news Markdown describes a dated update about that player.
