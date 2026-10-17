@@ -272,6 +272,18 @@ export const orchestrationTools: OrchestrationToolEntry[] = [
     tags: ["CLI sessions", "worktrees", "coding agents", "macOS"]
   },
   {
+    slug: "grove",
+    title: "Grove",
+    url: "https://github.com/efim0v/grove",
+    sourceName: "Grove GitHub repository and website",
+    mark: "Gr",
+    summary:
+      "GPL-3.0 macOS menu-bar app and CLI for running parallel Claude Code sessions on a multi-repo project, with one workspace per feature that holds a git worktree of each chosen repository on one branch.",
+    note:
+      "Also shows Claude Code sessions across projects and accounts and moves a session to another Claude account; requires macOS 26+ on Apple silicon, builds are signed ad hoc and not notarized, and it is tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "worktrees", "multi-repo", "Claude Code", "macOS", "GPL-3.0"]
+  },
+  {
     slug: "superagent",
     title: "SuperAgent",
     url: "https://superagent.computer/",
