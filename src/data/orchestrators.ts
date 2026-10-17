@@ -3216,5 +3216,47 @@ export const orchestrators: OrchestratorEntry[] = [
       ctaHref: agentAnalyticsSignupHref("yylo"),
       screenshots: []
     }
+  },
+  {
+    slug: "sqwakie",
+    rank: 42,
+    title: "Sqwakie",
+    githubRepo: "alexcarney460-hue/walkie",
+    category: "Coordination And Team Systems",
+    accent: "mint",
+    mark: { kind: "image", src: "/logos/sqwakie.svg", label: "Sqwakie mark" },
+    summary:
+      "A source-available (FSL-1.1-ALv2, converts to Apache-2.0) coordination layer where Claude Code and Codex agents message each other with CLI commands or MCP tools over a signed append-only team log.",
+    note:
+      "Daemons connect peer-to-peer over iroh or Tailscale with no Sqwakie server in the middle; every machine serves a live Mission Control dashboard, and agents can start, review, and finish project kanban cards.",
+    overview: [
+      "Setup connects Claude Code and Codex when it finds them. Agents use post, get, reply, subscribe, and ask from the CLI or as MCP tools. The documented install is macOS on Apple Silicon and Linux; native Windows is not supported.",
+      "It belongs in Coordination And Team Systems because the shared team log and project boards are the coordination layer between agents on different machines. Daemons replicate a signed append-only log peer-to-peer, built on iroh or over Tailscale, with no Sqwakie server in the middle. Each machine serves a live Mission Control dashboard, and kanban cards on project boards can be started, reviewed, and finished by agents."
+    ],
+    bestFor: [
+      "Claude Code and Codex agents messaging across machines",
+      "Peer-to-peer team logs without a central Sqwakie server",
+      "Live dashboards and agent-updated kanban boards"
+    ],
+    tags: ["coordination", "coding agents", "peer-to-peer", "MCP", "kanban", "FSL-1.1-ALv2"],
+    links: [
+      { label: "Website", href: "https://sqwakie.si/", emphasis: "primary" },
+      { label: "GitHub", href: "https://github.com/alexcarney460-hue/walkie" }
+    ],
+    screenshots: [],
+    agentAnalytics: agentAnalyticsSection(
+      "sqwakie",
+      "Sqwakie",
+      "A separately configured outcome readout can inform the next task posted through a Sqwakie team after its work is deployed.",
+      [
+        "agents implement and review a user-facing change",
+        "the operator deploys it to a separately instrumented product",
+        "an agent with separately configured analytics access reads the results",
+        "the team uses the measured outcome when planning its next handoff"
+      ],
+      "This is an optional workflow, not a native Sqwakie integration. Configure tracking on the deployed surface and analytics access in the querying agent separately; the team log, Mission Control dashboard, and kanban boards do not supply product analytics.",
+      "deployed page, signup, activation event, or funnel step",
+      []
+    )
   }
 ];
