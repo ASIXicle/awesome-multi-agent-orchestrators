@@ -3258,5 +3258,58 @@ export const orchestrators: OrchestratorEntry[] = [
       "deployed page, signup, activation event, or funnel step",
       []
     )
+  },
+  {
+    slug: "t3-code",
+    rank: 43,
+    title: "T3 Code",
+    githubRepo: "pingdotgg/t3code",
+    category: "Parallel Coding-Agent Runners",
+    accent: "blue",
+    mark: { kind: "monogram", value: "T3", label: "T3 Code monogram" },
+    summary: "An MIT-licensed control plane for coding agents, with cross-provider child-task delegation, visible subagent threads, MCP coordination, worktree handoffs, and desktop, web, and mobile interfaces.",
+    note: "Native dot, Space and complete Claude Artifacts workflows inside T3 are unverified; ChatGPT plan sharing does not import ChatGPT conversations or memories, and provider-specific limits still apply.",
+    overview: [
+      "T3 Code controls existing coding harnesses using separately configured providers. Orchestrator V2, released in v0.1.0 on October 15, 2026 UTC, lets a parent use delegate_task to start child threads on another provider or model, wait or continue working, and receive results.",
+      "The MCP surface exposes thread creation, launch, messages, waits, interruption, and worktree handoffs. Child threads retain their own provider-native history; lineage makes their model, status, and results visible. This places T3 Code with parallel coding-agent runners rather than a terminal-only multiplexer.",
+      "The code is MIT-licensed; provider subscriptions, authentication, limits, and charges remain separate. The README describes an early project with expected bugs. V2 makes a one-way copy of the V1 database, connected clients must match the server, and new threads initially default to Full access. Provider switching is a lossy handoff rather than a transfer of complete native sessions.",
+      "Provider support is documented for coding harnesses and account routes: Codex can use a ChatGPT plan or existing CLI login, and Claude uses Claude Code configuration. OpenAI says plan sharing does not grant ChatGPT conversations or memories. No T3-specific embedding or synchronization was verified for ChatGPT dot or Space collaboration; the separately authorized ChatGPT-to-T3 MCP connection lets an outside agent operate T3 threads.",
+      "T3 provides its own sandboxed HTML replies, scheduled tasks, and supported-iOS voice transcription into drafts; MCP Apps rendering is documented for Codex, while other providers show ordinary tool calls. Anthropic supports Artifacts in Claude Code, but its complete editing, publishing and synchronization lifecycle inside T3 was not verified. Keep native provider apps for those workflows until the specific path is confirmed."
+    ],
+    bestFor: ["Mixed-harness coding and review", "Visible parent/child agent work", "Desktop and remote supervision of local agent runs"],
+    tags: ["coding agents", "delegation", "multi-harness", "MCP", "worktrees", "MIT"],
+    links: [
+      { label: "Website", href: "https://t3.codes/", emphasis: "primary" },
+      { label: "GitHub", href: "https://github.com/pingdotgg/t3code" },
+      { label: "V2 release", href: "https://github.com/pingdotgg/t3code/releases/tag/v0.1.0" },
+      { label: "Permission modes", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/docs/user/permission-modes.md" },
+      { label: "Provider and account support", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/docs/user/install.md#providers" },
+      { label: "Visual replies and MCP Apps", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/docs/user/html-renders.md" },
+      { label: "Outside agents", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/docs/user/outside-agents.md" },
+      { label: "License", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/LICENSE" }
+    ],
+    screenshots: [{
+      src: "/images/players/t3-code/t3-code-official-desktop.webp",
+      alt: "T3 Code desktop interface with project threads, an agent response and a pull-request diff",
+      caption: "Official T3 Code product image, retrieved October 17, 2026; not a local runtime test or a demonstration of every V2 feature.",
+      sourceName: "T3 Code website",
+      sourceUrl: "https://t3.codes/"
+    }],
+    agentAnalytics: {
+      heading: "Measure projects built with T3 Code",
+      valueProp: "A T3 Code team can implement and review an onboarding change, then use separately configured product analytics to decide what to improve next.",
+      measurementLoop: [
+        "a parent delegates an onboarding change and an independent review to child tasks",
+        "the builder reviews and deploys the change to their instrumented product",
+        "an authorized follow-up task verifies signup_completed and first_project_created, then reads the observation window and prior-period comparison",
+        "the builder uses the measured conversion and drop-off to scope the next task, accounting for traffic mix and other changes"
+      ],
+      setupNotes: "This is an optional measurement workflow, not a verified native T3 Code integration. Configure product tracking and authorized Agent Analytics access separately. Child-thread status, token usage, queues, and recovery belong to orchestration telemetry; product events measure the application users receive. Advanced analytics may depend on the account's plan.",
+      prompt: "For this deployed product, use already authorized Agent Analytics access. Verify that signup_completed and first_project_created match the product's actual event definitions and are arriving. Compare the last complete 7 days with the preceding 7 days, including traffic sources and event counts; use funnel analysis only if available on this account. Report missing tracking, access, plan limits, or insufficient samples instead of inventing results. Recommend one next onboarding task. Do not change tracking or deploy without the product owner's authorization, treat before/after differences as proof of causation, or report T3 agent-run telemetry as product usage.",
+      ctaLabel: "Track builder outcomes",
+      ctaHref: "https://app.agentanalytics.sh/?onboarding=agent&utm_source=openorchestrators&utm_medium=player_page&utm_campaign=agent_analytics_sections&utm_content=t3-code",
+      screenshots: [],
+      relatedLinks: [{ label: "Agent Analytics docs", href: "https://docs.agentanalytics.sh/" }]
+    }
   }
 ];
