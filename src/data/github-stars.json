@@ -210,5 +210,9 @@
   "tale": {
     "stars": 35,
     "fetchedAt": "2026-10-16T04:02:12.010Z"
+  },
+  "sqwakie": {
+    "stars": 0,
+    "fetchedAt": "2026-10-17T08:24:32.000Z"
   }
 }
