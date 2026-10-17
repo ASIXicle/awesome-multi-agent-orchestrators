@@ -282,6 +282,18 @@ export const orchestrationTools: OrchestrationToolEntry[] = [
     note:
       "Also shows Claude Code sessions across projects and accounts and moves a session to another Claude account; requires macOS 26+ on Apple silicon, builds are signed ad hoc and not notarized, and it is tracked as a session workspace rather than an orchestrator runtime.",
     tags: ["CLI sessions", "worktrees", "multi-repo", "Claude Code", "macOS", "GPL-3.0"]
+  },
+  {
+    slug: "superagent",
+    title: "SuperAgent",
+    url: "https://superagent.computer/",
+    sourceName: "SuperAgent website and GitHub repository",
+    mark: "SA",
+    summary:
+      "MIT-licensed macOS workspace where Claude Code and Codex run as per-project chats, each on its own git worktree.",
+    note:
+      "Each chat gets a real browser the agent drives on the user's existing logins, a dedicated iOS Simulator for build-install-screenshot loops, a board the agent maintains, scheduled routines, and an iPhone companion paired over an end-to-end encrypted relay for approving tool calls remotely. Runs locally on the user's own Claude or OpenAI subscription; tracked as a CLI-agent session workspace rather than an orchestrator runtime.",
+    tags: ["open source", "CLI sessions", "worktrees", "browser", "iOS simulator", "macOS"]
   }
 ];
 
