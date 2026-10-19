@@ -297,14 +297,14 @@ export const orchestrationTools: OrchestrationToolEntry[] = [
   },
   {
     slug: "grove",
-    title: "Grove",
-    url: "https://github.com/efim0v/grove",
-    sourceName: "Grove GitHub repository and website",
-    mark: "Gr",
+    title: "Brow",
+    url: "https://github.com/efim0v/brow",
+    sourceName: "Brow GitHub repository and website (formerly Grove)",
+    mark: "Br",
     summary:
-      "GPL-3.0 macOS menu-bar app and CLI for running parallel Claude Code sessions on a multi-repo project, with one workspace per feature that holds a git worktree of each chosen repository on one branch.",
+      "GPL-3.0 macOS app combining Claude Code account-limit monitoring in the MacBook notch with parallel multi-repo workspaces, each holding a git worktree of every chosen repository on one branch.",
     note:
-      "Also shows Claude Code sessions across projects and accounts and moves a session to another Claude account; requires macOS 26+ on Apple silicon, builds are signed ad hoc and not notarized, and it is tracked as a session workspace rather than an orchestrator runtime.",
+      "Formerly Grove; its Workspaces engine is part of Brow from 0.4.0. Supports cross-account session continuation and shows 5-hour and weekly account limits; requires macOS 26+ on Apple silicon, and builds are signed ad hoc without notarization. Tracked as a session workspace rather than an orchestrator runtime.",
     tags: ["CLI sessions", "worktrees", "multi-repo", "Claude Code", "macOS", "GPL-3.0"]
   },
   {
@@ -3139,6 +3139,45 @@ export const orchestrators: OrchestratorEntry[] = [
     }
   },
   {
+    slug: "aiworks",
+    rank: 44,
+    title: "AIWorks",
+    githubRepo: "netbka/aiworks",
+    category: "Parallel Coding-Agent Runners",
+    accent: "orange",
+    mark: { kind: "monogram", value: "AW", label: "AIWorks monogram" },
+    summary: "An MIT-licensed supervisor for one Windows PC that runs Claude Code, Codex, and Cursor through an approved plan in isolated git worktrees, has a separate session verify each step, and delivers pull requests to GitHub.",
+    note: "Early preview. Real worker execution and process containment are Windows-only; the dashboard demo with synthetic data also runs on Linux and macOS. Plans are private local files registered explicitly, and a supervisor running unmerged code starts no new work.",
+    overview: [
+      "AIWorks is a Node.js supervisor that runs on the owner's computer. A plan is a private JSON file with an explicit authorization; the supervisor hands each step to a worker CLI (Claude Code, Codex, or Cursor) inside its own git worktree, has a separate verification session check the result against the step's acceptance criteria, and opens a pull request on GitHub. It keeps going through worker crashes, restarts, and provider usage limits, and asks the owner only when a decision is needed.",
+      "It belongs in Parallel Coding-Agent Runners because the plan, not a chat session, is what gets scheduled: steps run as independent worker sessions in isolated worktrees, implementation and verification are separate sessions, and a local dashboard shows what is running, what needs a decision, and what was delivered. Its README reports that in its first day of operation it produced 63 checked pull requests and wrote 53% of its own code."
+    ],
+    bestFor: ["Unattended plan-driven delivery on one Windows PC", "Separate implementation and verification sessions", "Claude Code, Codex, and Cursor as interchangeable workers"],
+    tags: ["coding agents", "git worktrees", "independent verification", "pull requests", "Windows", "MIT"],
+    links: [
+      { label: "GitHub", href: "https://github.com/netbka/aiworks", emphasis: "primary" },
+      { label: "README", href: "https://github.com/netbka/aiworks/blob/main/README.md" },
+      { label: "Runbook", href: "https://github.com/netbka/aiworks/blob/main/docs/SUPERVISOR.md" },
+      { label: "License", href: "https://github.com/netbka/aiworks/blob/main/LICENSE" }
+    ],
+    screenshots: [],
+    agentAnalytics: {
+      heading: "Measure outcomes from AIWorks-delivered changes",
+      valueProp: "AIWorks delivers reviewed pull requests; it does not observe what a merged change does for users. Separately configured product analytics can close that loop.",
+      measurementLoop: [
+        "a plan step is implemented by a worker session and verified by a separate session",
+        "the reviewed pull request is merged and deployed to a separately instrumented product surface",
+        "a human or an agent with separately configured analytics access reads the observed results",
+        "the owner uses that evidence to write the next plan"
+      ],
+      setupNotes: "This is an optional workflow, not a native AIWorks integration with Agent Analytics. Configure tracking on the deployed product and analytics access separately; this listing does not install tracking or report AIWorks runs to Agent Analytics.",
+      prompt: "If tracking and analytics access are already configured for the deployed change, report measured user outcomes for the observation window with their limitations. Otherwise, identify what is missing. Do not assume a native AIWorks integration or infer outcomes from pull request activity.",
+      ctaLabel: "Explore outcome measurement",
+      ctaHref: agentAnalyticsSignupHref("aiworks"),
+      screenshots: []
+    }
+  },
+  {
     slug: "tale",
     rank: 40,
     title: "Tale",
@@ -3310,6 +3349,45 @@ export const orchestrators: OrchestratorEntry[] = [
       ctaHref: "https://app.agentanalytics.sh/?onboarding=agent&utm_source=openorchestrators&utm_medium=player_page&utm_campaign=agent_analytics_sections&utm_content=t3-code",
       screenshots: [],
       relatedLinks: [{ label: "Agent Analytics docs", href: "https://docs.agentanalytics.sh/" }]
+    }
+  },
+  {
+    slug: "stark-os",
+    rank: 45,
+    title: "STARK OS",
+    githubRepo: "Shahrukhalid/stark-os",
+    category: "Coordination And Team Systems",
+    accent: "cyan",
+    mark: { kind: "monogram", value: "S", label: "STARK OS monogram" },
+    summary: "An MIT-licensed, self-hosted team of seven role-based agents for social media work, each with its own prompt, tools, memory and preferred free OpenRouter model.",
+    note: "Coordinates a director, specialists and an observe-only red team through delegation and parallel reviews; publishing uses per-post human approval or an explicitly enabled Autopilot trust level, with sensitive topics and failed checks held for review.",
+    overview: [
+      "STARK OS runs locally as a FastAPI service with a Next.js dashboard. Seven agents cover a social media team's roles: a director (briefs, delegation, brand and security review), a copywriter, a community manager, a researcher, a video and visuals planner, a red-team agent and a publisher. Each agent is defined by a TOML file and a system prompt.",
+      "The director delegates work to specialists, and team reviews run the reviewers in parallel before the red-team agent challenges the combined result. Agent-to-agent messages are recorded and shown in the dashboard. A permission engine limits which tools each agent may call; the red-team agent is observe-only.",
+      "Drafts pass deterministic policy checks (platform length limits, leaked keys, personal data, missing ad disclosure, giveaway rules). Publishing uses human approval of the exact text or an explicitly enabled Autopilot trust level; edits cancel existing per-post approvals, and sensitive topics or failed checks still require review. Bluesky and Mastodon posting is real; other platforms produce drafts labelled as simulated."
+    ],
+    bestFor: ["Role-based agent teams for social media", "Human-approved publishing", "Running on free models locally"],
+    tags: ["agent teams", "delegation", "parallel review", "red team", "human approval", "self-hosted", "MIT"],
+    links: [
+      { label: "GitHub", href: "https://github.com/Shahrukhalid/stark-os", emphasis: "primary" },
+      { label: "User guide", href: "https://github.com/Shahrukhalid/stark-os/blob/main/docs/USER_GUIDE.md" },
+      { label: "Agent definitions", href: "https://github.com/Shahrukhalid/stark-os/tree/main/agents" }
+    ],
+    screenshots: [],
+    agentAnalytics: {
+      heading: "Measure outcomes from STARK OS posts",
+      valueProp: "STARK OS reports platform metrics for posts it actually published. Separately configured product analytics can show what those posts did for a linked site or product.",
+      measurementLoop: [
+        "the agent team drafts and checks a post, and a human approves and publishes it",
+        "the post links to a separately instrumented site or product page",
+        "a human or an agent with separately configured analytics access reads the observed results",
+        "the team uses that evidence to plan the next campaign"
+      ],
+      setupNotes: "This is an optional workflow, not a native STARK OS integration with Agent Analytics. Configure tracking on the linked site and analytics access separately; this listing does not install tracking or report STARK OS agent runs to Agent Analytics.",
+      prompt: "If tracking and analytics access are already configured for the linked page, report measured visitor outcomes for the campaign window with their limitations. Otherwise, identify what is missing. Do not assume a native STARK OS integration or infer causation from a before-and-after comparison alone.",
+      ctaLabel: "Explore outcome measurement",
+      ctaHref: agentAnalyticsSignupHref("stark-os"),
+      screenshots: []
     }
   }
 ];

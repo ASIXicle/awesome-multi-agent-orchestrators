@@ -29,13 +29,24 @@ Projects are usually not a good fit when they are primarily:
 - unrelated AI tooling without a meaningful orchestration layer
 - impossible to verify from public sources
 
+## Requirements for new submissions
+
+Every new project submission must meet both requirements at review time:
+
+- **At least 10 GitHub stars:** The project's public GitHub repository must have at least 10 stars. For closed-source products, an official public project, SDK, or integration repository may satisfy this requirement; disclosure of the product's source code is not required, and the separate closed-product category remains available.
+- **A dedicated project website on its own/custom domain:** The website must be functioning and provide public information about the project. A GitHub-only presence, such as a repository, README, or `github.io` site without a custom domain, does not qualify. A custom domain must serve a project website, rather than simply redirect to a GitHub repository.
+
+Include both the qualifying public GitHub repository and the project website in the README entry and pull request so maintainers can verify them. Starring this directory is separate from the project's minimum star requirement.
+
+These requirements apply to new submissions. Existing listings will not be removed retroactively because of these requirements.
+
 ## How to add or update an entry
 
 Listing contributions only need to update [`README.md`](./README.md).
 
 1. Before submitting a pull request, please star this repository.
 2. Add or update a bullet in the appropriate README category. You may also feature a new project in Latest Additions.
-3. Include the project name, official website or repository links, and a short, factual description of its orchestration angle. State the license or source-availability status accurately.
+3. Include the project name, official links (both the qualifying website and GitHub repository for new submissions), and a short, factual description of its orchestration angle. State the license or source-availability status accurately.
 4. In the pull request, explain why the project belongs and link the public sources used to verify the description.
 
 External contributors do not need to edit `src/data/orchestrators.ts`, supply website metadata or assets, install dependencies, run website tests, or preview the site locally for a listing submission. Maintainers handle website data, presentation, and validation separately.
