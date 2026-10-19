@@ -270,6 +270,54 @@ export const orchestrationTools: OrchestrationToolEntry[] = [
     note:
       "Gives each task its own worktree, terminal, browser, and diff review, with optional Docker or Apple container, SSH-host, or cloud-sandbox isolation and Manager Agents that start and steer other agents through the dev CLI; tracked as a session workspace rather than an orchestrator runtime.",
     tags: ["CLI sessions", "worktrees", "coding agents", "macOS"]
+  },
+  {
+    slug: "spaceapp",
+    title: "SpaceApp",
+    url: "https://spaceapp.dev/",
+    sourceName: "SpaceApp README, docs, and website",
+    mark: "Sp",
+    summary:
+      "Source-available (BSL 1.1), self-hosted web workspace for running OpenCode, Codex, Claude Code, Gemini CLI, and other coding-agent CLIs side by side in persistent rooms.",
+    note:
+      "Runs each CLI as a terminal pane in a room that keeps its sessions, with MCP servers, managed browser panes, and a Room Agent for coordinating work across panes; installs with one npx command on Docker (Linux, macOS, Windows 11); tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "coding agents", "self-hosted", "Docker", "BSL-1.1"]
+  },
+  {
+    slug: "alchemist-coder",
+    title: "Alchemist Coder",
+    url: "https://github.com/Alekla0126/alchemist-coder",
+    sourceName: "Alchemist Coder GitHub README",
+    mark: "Alc",
+    summary:
+      "AGPL-3.0 desktop app for running Claude Code and Codex over ACP, following each agent's subagent tree live, and letting several agents solve one plan in separate git worktrees.",
+    note:
+      "Runs on macOS, Windows, and Linux; its Arena has one to four agents solve the same approved plan in their own worktrees before you merge one, a standing coordinator hands assignments to an organization of agents, and it indexes Claude Code, Codex, Gemini CLI, and Grok Build history into a read-only local search; the free Community edition runs agents only on local models, so it is tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "worktrees", "coding agents", "ACP", "desktop", "AGPL-3.0"]
+  },
+  {
+    slug: "grove",
+    title: "Grove",
+    url: "https://github.com/efim0v/grove",
+    sourceName: "Grove GitHub repository and website",
+    mark: "Gr",
+    summary:
+      "GPL-3.0 macOS menu-bar app and CLI for running parallel Claude Code sessions on a multi-repo project, with one workspace per feature that holds a git worktree of each chosen repository on one branch.",
+    note:
+      "Also shows Claude Code sessions across projects and accounts and moves a session to another Claude account; requires macOS 26+ on Apple silicon, builds are signed ad hoc and not notarized, and it is tracked as a session workspace rather than an orchestrator runtime.",
+    tags: ["CLI sessions", "worktrees", "multi-repo", "Claude Code", "macOS", "GPL-3.0"]
+  },
+  {
+    slug: "superagent",
+    title: "SuperAgent",
+    url: "https://superagent.computer/",
+    sourceName: "SuperAgent website and GitHub repository",
+    mark: "SA",
+    summary:
+      "MIT-licensed macOS workspace where Claude Code and Codex run as per-project chats, each on its own git worktree.",
+    note:
+      "Each chat gets a real browser the agent drives on the user's existing logins, a dedicated iOS Simulator for build-install-screenshot loops, a board the agent maintains, scheduled routines, and an iPhone companion paired over an end-to-end encrypted relay for approving tool calls remotely. Runs locally on the user's own Claude or OpenAI subscription; tracked as a CLI-agent session workspace rather than an orchestrator runtime.",
+    tags: ["open source", "CLI sessions", "worktrees", "browser", "iOS simulator", "macOS"]
   }
 ];
 
@@ -3091,6 +3139,45 @@ export const orchestrators: OrchestratorEntry[] = [
     }
   },
   {
+    slug: "aiworks",
+    rank: 44,
+    title: "AIWorks",
+    githubRepo: "netbka/aiworks",
+    category: "Parallel Coding-Agent Runners",
+    accent: "orange",
+    mark: { kind: "monogram", value: "AW", label: "AIWorks monogram" },
+    summary: "An MIT-licensed supervisor for one Windows PC that runs Claude Code, Codex, and Cursor through an approved plan in isolated git worktrees, has a separate session verify each step, and delivers pull requests to GitHub.",
+    note: "Early preview. Real worker execution and process containment are Windows-only; the dashboard demo with synthetic data also runs on Linux and macOS. Plans are private local files registered explicitly, and a supervisor running unmerged code starts no new work.",
+    overview: [
+      "AIWorks is a Node.js supervisor that runs on the owner's computer. A plan is a private JSON file with an explicit authorization; the supervisor hands each step to a worker CLI (Claude Code, Codex, or Cursor) inside its own git worktree, has a separate verification session check the result against the step's acceptance criteria, and opens a pull request on GitHub. It keeps going through worker crashes, restarts, and provider usage limits, and asks the owner only when a decision is needed.",
+      "It belongs in Parallel Coding-Agent Runners because the plan, not a chat session, is what gets scheduled: steps run as independent worker sessions in isolated worktrees, implementation and verification are separate sessions, and a local dashboard shows what is running, what needs a decision, and what was delivered. Its README reports that in its first day of operation it produced 63 checked pull requests and wrote 53% of its own code."
+    ],
+    bestFor: ["Unattended plan-driven delivery on one Windows PC", "Separate implementation and verification sessions", "Claude Code, Codex, and Cursor as interchangeable workers"],
+    tags: ["coding agents", "git worktrees", "independent verification", "pull requests", "Windows", "MIT"],
+    links: [
+      { label: "GitHub", href: "https://github.com/netbka/aiworks", emphasis: "primary" },
+      { label: "README", href: "https://github.com/netbka/aiworks/blob/main/README.md" },
+      { label: "Runbook", href: "https://github.com/netbka/aiworks/blob/main/docs/SUPERVISOR.md" },
+      { label: "License", href: "https://github.com/netbka/aiworks/blob/main/LICENSE" }
+    ],
+    screenshots: [],
+    agentAnalytics: {
+      heading: "Measure outcomes from AIWorks-delivered changes",
+      valueProp: "AIWorks delivers reviewed pull requests; it does not observe what a merged change does for users. Separately configured product analytics can close that loop.",
+      measurementLoop: [
+        "a plan step is implemented by a worker session and verified by a separate session",
+        "the reviewed pull request is merged and deployed to a separately instrumented product surface",
+        "a human or an agent with separately configured analytics access reads the observed results",
+        "the owner uses that evidence to write the next plan"
+      ],
+      setupNotes: "This is an optional workflow, not a native AIWorks integration with Agent Analytics. Configure tracking on the deployed product and analytics access separately; this listing does not install tracking or report AIWorks runs to Agent Analytics.",
+      prompt: "If tracking and analytics access are already configured for the deployed change, report measured user outcomes for the observation window with their limitations. Otherwise, identify what is missing. Do not assume a native AIWorks integration or infer outcomes from pull request activity.",
+      ctaLabel: "Explore outcome measurement",
+      ctaHref: agentAnalyticsSignupHref("aiworks"),
+      screenshots: []
+    }
+  },
+  {
     slug: "tale",
     rank: 40,
     title: "Tale",
@@ -3132,19 +3219,152 @@ export const orchestrators: OrchestratorEntry[] = [
     }
   },
   {
-    slug: "stark-os",
+    slug: "yylo",
     rank: 41,
+    title: "YYLO",
+    githubRepo: "yylo-dev/yylo",
+    accent: "emerald",
+    mark: { kind: "monogram", value: "Yy", label: "YYLO monogram" },
+    summary: "A command-line orchestrator that runs coding agents through a typed task lifecycle with isolated worktrees, validation gates, and Git-protected merges.",
+    note: "Coordinates CLI subagents such as Pi and Codex across task start, task finish, and merge land steps while keeping controller metadata, run receipts, and product bytes in separate authorities.",
+    overview: [
+      "YYLO is an MIT-licensed command-line orchestrator for coding agents, repeatable workflows, and receipt-backed repository changes. It installs from npm as @yylo/cli and exposes equivalent yylo and yy launchers.",
+      "task start freezes the protected target SHA, creates a dedicated branch and worktree, and completes configured dependency hydration before reporting WORKING; implementation and focused tests happen in that worktree, task finish verifies delivery, and merge land composes the change in a detached candidate using Git expected-old ref protection.",
+      "Task and Kanban state, Record storage, and evaluation evidence live in the separate YYLO Ledger and YYLO Benchmark packages; yy ledger and yy benchmark delegate to those independently installed CLIs rather than bundling alternate implementations."
+    ],
+    bestFor: ["Typed task lifecycles for coding agents", "Isolated per-task worktrees", "Git-protected merge orchestration"],
+    tags: ["coding agents", "CLI", "worktrees", "merge orchestration", "MIT"],
+    links: [
+      { label: "Website", href: "https://yylo.dev/", emphasis: "primary" },
+      { label: "GitHub", href: "https://github.com/yylo-dev/yylo" },
+      { label: "npm", href: "https://www.npmjs.com/package/@yylo/cli" }
+    ],
+    screenshots: [],
+    agentAnalytics: {
+      heading: "Measure outcomes from YYLO-orchestrated work",
+      valueProp: "YYLO records task runs, receipts, and merge results. Separately configured analytics can help a team assess a deployed change's user-facing results.",
+      measurementLoop: [
+        "a team uses YYLO to run a coding-agent task and land the reviewed change",
+        "the team deploys the change to a separately instrumented surface",
+        "a human or an agent with separately configured analytics access reads the observed results",
+        "the team uses that evidence when deciding on the next task"
+      ],
+      setupNotes: "This is an optional workflow, not a built-in YYLO integration with Agent Analytics. Configure tracking on the deployed product and analytics access separately; YYLO does not install tracking or send its run receipts to Agent Analytics.",
+      prompt: "If analytics access and tracking are already configured, inspect the deployed change's observation window and report measured user outcomes. Otherwise, explain what is missing. Do not imply a native YYLO integration or infer causation from a before-and-after comparison alone.",
+      ctaLabel: "Explore outcome measurement",
+      ctaHref: agentAnalyticsSignupHref("yylo"),
+      screenshots: []
+    }
+  },
+  {
+    slug: "sqwakie",
+    rank: 42,
+    title: "Sqwakie",
+    githubRepo: "alexcarney460-hue/walkie",
+    category: "Coordination And Team Systems",
+    accent: "mint",
+    mark: { kind: "image", src: "/logos/sqwakie.svg", label: "Sqwakie mark" },
+    summary:
+      "A source-available (FSL-1.1-ALv2, converts to Apache-2.0) coordination layer where Claude Code and Codex agents message each other with CLI commands or MCP tools over a signed append-only team log.",
+    note:
+      "Daemons connect peer-to-peer over iroh or Tailscale with no Sqwakie server in the middle; every machine serves a live Mission Control dashboard, and agents can start, review, and finish project kanban cards.",
+    overview: [
+      "Setup connects Claude Code and Codex when it finds them. Agents use post, get, reply, subscribe, and ask from the CLI or as MCP tools. The documented install is macOS on Apple Silicon and Linux; native Windows is not supported.",
+      "It belongs in Coordination And Team Systems because the shared team log and project boards are the coordination layer between agents on different machines. Daemons replicate a signed append-only log peer-to-peer, built on iroh or over Tailscale, with no Sqwakie server in the middle. Each machine serves a live Mission Control dashboard, and kanban cards on project boards can be started, reviewed, and finished by agents."
+    ],
+    bestFor: [
+      "Claude Code and Codex agents messaging across machines",
+      "Peer-to-peer team logs without a central Sqwakie server",
+      "Live dashboards and agent-updated kanban boards"
+    ],
+    tags: ["coordination", "coding agents", "peer-to-peer", "MCP", "kanban", "FSL-1.1-ALv2"],
+    links: [
+      { label: "Website", href: "https://sqwakie.si/", emphasis: "primary" },
+      { label: "GitHub", href: "https://github.com/alexcarney460-hue/walkie" }
+    ],
+    screenshots: [],
+    agentAnalytics: agentAnalyticsSection(
+      "sqwakie",
+      "Sqwakie",
+      "A separately configured outcome readout can inform the next task posted through a Sqwakie team after its work is deployed.",
+      [
+        "agents implement and review a user-facing change",
+        "the operator deploys it to a separately instrumented product",
+        "an agent with separately configured analytics access reads the results",
+        "the team uses the measured outcome when planning its next handoff"
+      ],
+      "This is an optional workflow, not a native Sqwakie integration. Configure tracking on the deployed surface and analytics access in the querying agent separately; the team log, Mission Control dashboard, and kanban boards do not supply product analytics.",
+      "deployed page, signup, activation event, or funnel step",
+      []
+    )
+  },
+  {
+    slug: "t3-code",
+    rank: 43,
+    title: "T3 Code",
+    githubRepo: "pingdotgg/t3code",
+    category: "Parallel Coding-Agent Runners",
+    accent: "blue",
+    mark: { kind: "monogram", value: "T3", label: "T3 Code monogram" },
+    summary: "An MIT-licensed control plane for coding agents, with cross-provider child-task delegation, visible subagent threads, MCP coordination, worktree handoffs, and desktop, web, and mobile interfaces.",
+    note: "Native dot, Space and complete Claude Artifacts workflows inside T3 are unverified; ChatGPT plan sharing does not import ChatGPT conversations or memories, and provider-specific limits still apply.",
+    overview: [
+      "T3 Code controls existing coding harnesses using separately configured providers. Orchestrator V2, released in v0.1.0 on October 15, 2026 UTC, lets a parent use delegate_task to start child threads on another provider or model, wait or continue working, and receive results.",
+      "The MCP surface exposes thread creation, launch, messages, waits, interruption, and worktree handoffs. Child threads retain their own provider-native history; lineage makes their model, status, and results visible. This places T3 Code with parallel coding-agent runners rather than a terminal-only multiplexer.",
+      "The code is MIT-licensed; provider subscriptions, authentication, limits, and charges remain separate. The README describes an early project with expected bugs. V2 makes a one-way copy of the V1 database, connected clients must match the server, and new threads initially default to Full access. Provider switching is a lossy handoff rather than a transfer of complete native sessions.",
+      "Provider support is documented for coding harnesses and account routes: Codex can use a ChatGPT plan or existing CLI login, and Claude uses Claude Code configuration. OpenAI says plan sharing does not grant ChatGPT conversations or memories. No T3-specific embedding or synchronization was verified for ChatGPT dot or Space collaboration; the separately authorized ChatGPT-to-T3 MCP connection lets an outside agent operate T3 threads.",
+      "T3 provides its own sandboxed HTML replies, scheduled tasks, and supported-iOS voice transcription into drafts; MCP Apps rendering is documented for Codex, while other providers show ordinary tool calls. Anthropic supports Artifacts in Claude Code, but its complete editing, publishing and synchronization lifecycle inside T3 was not verified. Keep native provider apps for those workflows until the specific path is confirmed."
+    ],
+    bestFor: ["Mixed-harness coding and review", "Visible parent/child agent work", "Desktop and remote supervision of local agent runs"],
+    tags: ["coding agents", "delegation", "multi-harness", "MCP", "worktrees", "MIT"],
+    links: [
+      { label: "Website", href: "https://t3.codes/", emphasis: "primary" },
+      { label: "GitHub", href: "https://github.com/pingdotgg/t3code" },
+      { label: "V2 release", href: "https://github.com/pingdotgg/t3code/releases/tag/v0.1.0" },
+      { label: "Permission modes", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/docs/user/permission-modes.md" },
+      { label: "Provider and account support", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/docs/user/install.md#providers" },
+      { label: "Visual replies and MCP Apps", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/docs/user/html-renders.md" },
+      { label: "Outside agents", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/docs/user/outside-agents.md" },
+      { label: "License", href: "https://github.com/pingdotgg/t3code/blob/v0.1.0/LICENSE" }
+    ],
+    screenshots: [{
+      src: "/images/players/t3-code/t3-code-official-desktop.webp",
+      alt: "T3 Code desktop interface with project threads, an agent response and a pull-request diff",
+      caption: "Official T3 Code product image, retrieved October 17, 2026; not a local runtime test or a demonstration of every V2 feature.",
+      sourceName: "T3 Code website",
+      sourceUrl: "https://t3.codes/"
+    }],
+    agentAnalytics: {
+      heading: "Measure projects built with T3 Code",
+      valueProp: "A T3 Code team can implement and review an onboarding change, then use separately configured product analytics to decide what to improve next.",
+      measurementLoop: [
+        "a parent delegates an onboarding change and an independent review to child tasks",
+        "the builder reviews and deploys the change to their instrumented product",
+        "an authorized follow-up task verifies signup_completed and first_project_created, then reads the observation window and prior-period comparison",
+        "the builder uses the measured conversion and drop-off to scope the next task, accounting for traffic mix and other changes"
+      ],
+      setupNotes: "This is an optional measurement workflow, not a verified native T3 Code integration. Configure product tracking and authorized Agent Analytics access separately. Child-thread status, token usage, queues, and recovery belong to orchestration telemetry; product events measure the application users receive. Advanced analytics may depend on the account's plan.",
+      prompt: "For this deployed product, use already authorized Agent Analytics access. Verify that signup_completed and first_project_created match the product's actual event definitions and are arriving. Compare the last complete 7 days with the preceding 7 days, including traffic sources and event counts; use funnel analysis only if available on this account. Report missing tracking, access, plan limits, or insufficient samples instead of inventing results. Recommend one next onboarding task. Do not change tracking or deploy without the product owner's authorization, treat before/after differences as proof of causation, or report T3 agent-run telemetry as product usage.",
+      ctaLabel: "Track builder outcomes",
+      ctaHref: "https://app.agentanalytics.sh/?onboarding=agent&utm_source=openorchestrators&utm_medium=player_page&utm_campaign=agent_analytics_sections&utm_content=t3-code",
+      screenshots: [],
+      relatedLinks: [{ label: "Agent Analytics docs", href: "https://docs.agentanalytics.sh/" }]
+    }
+  },
+  {
+    slug: "stark-os",
+    rank: 45,
     title: "STARK OS",
     githubRepo: "Shahrukhalid/stark-os",
     category: "Coordination And Team Systems",
     accent: "cyan",
     mark: { kind: "monogram", value: "S", label: "STARK OS monogram" },
     summary: "An MIT-licensed, self-hosted team of seven role-based agents for social media work, each with its own prompt, tools, memory and preferred free OpenRouter model.",
-    note: "Coordinates a director agent, specialist agents and an observe-only red-team agent through delegation and parallel reviews; only the publisher agent can post, after human approval of the exact text.",
+    note: "Coordinates a director, specialists and an observe-only red team through delegation and parallel reviews; publishing uses per-post human approval or an explicitly enabled Autopilot trust level, with sensitive topics and failed checks held for review.",
     overview: [
       "STARK OS runs locally as a FastAPI service with a Next.js dashboard. Seven agents cover a social media team's roles: a director (briefs, delegation, brand and security review), a copywriter, a community manager, a researcher, a video and visuals planner, a red-team agent and a publisher. Each agent is defined by a TOML file and a system prompt.",
       "The director delegates work to specialists, and team reviews run the reviewers in parallel before the red-team agent challenges the combined result. Agent-to-agent messages are recorded and shown in the dashboard. A permission engine limits which tools each agent may call; the red-team agent is observe-only.",
-      "Drafts pass deterministic policy checks (platform length limits, leaked keys, personal data, missing ad disclosure, giveaway rules). Publishing requires human approval of the exact text, and an edit cancels the approval. Bluesky and Mastodon posting is real; other platforms produce drafts labelled as simulated."
+      "Drafts pass deterministic policy checks (platform length limits, leaked keys, personal data, missing ad disclosure, giveaway rules). Publishing uses human approval of the exact text or an explicitly enabled Autopilot trust level; edits cancel existing per-post approvals, and sensitive topics or failed checks still require review. Bluesky and Mastodon posting is real; other platforms produce drafts labelled as simulated."
     ],
     bestFor: ["Role-based agent teams for social media", "Human-approved publishing", "Running on free models locally"],
     tags: ["agent teams", "delegation", "parallel review", "red team", "human approval", "self-hosted", "MIT"],

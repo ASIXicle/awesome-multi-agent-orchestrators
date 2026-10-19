@@ -29,31 +29,40 @@ Projects are usually not a good fit when they are primarily:
 - unrelated AI tooling without a meaningful orchestration layer
 - impossible to verify from public sources
 
+## Requirements for new submissions
+
+Every new project submission must meet both requirements at review time:
+
+- **At least 10 GitHub stars:** The project's public GitHub repository must have at least 10 stars. For closed-source products, an official public project, SDK, or integration repository may satisfy this requirement; disclosure of the product's source code is not required, and the separate closed-product category remains available.
+- **A dedicated project website on its own/custom domain:** The website must be functioning and provide public information about the project. A GitHub-only presence, such as a repository, README, or `github.io` site without a custom domain, does not qualify. A custom domain must serve a project website, rather than simply redirect to a GitHub repository.
+
+Include both the qualifying public GitHub repository and the project website in the README entry and pull request so maintainers can verify them. Starring this directory is separate from the project's minimum star requirement.
+
+These requirements apply to new submissions. Existing listings will not be removed retroactively because of these requirements.
+
 ## How to add or update an entry
 
-1. Edit [`src/data/orchestrators.ts`](./src/data/orchestrators.ts).
-2. Add or update an entry in the `orchestrators` array.
-3. Update the rank, name, local mark metadata, summary, tags, directory note, and official links.
-4. Keep the copy factual and concise. Avoid marketing language.
-5. If the number of entries changes, confirm the homepage still renders the right order and count from the shared data source.
-6. Preview the site locally before opening a pull request.
+Listing contributions only need to update [`README.md`](./README.md).
 
-## Local preview
+1. Before submitting a pull request, please star this repository.
+2. Add or update a bullet in the appropriate README category. You may also feature a new project in Latest Additions.
+3. Include the project name, official links (both the qualifying website and GitHub repository for new submissions), and a short, factual description of its orchestration angle. State the license or source-availability status accurately.
+4. In the pull request, explain why the project belongs and link the public sources used to verify the description.
 
-```bash
-cd open-orchestrators.org
-npm install
-npm run dev
-```
+External contributors do not need to edit `src/data/orchestrators.ts`, supply website metadata or assets, install dependencies, run website tests, or preview the site locally for a listing submission. Maintainers handle website data, presentation, and validation separately.
 
-Then open the local Astro URL printed in the terminal.
+## Website maintenance
+
+Maintainers keep the website directory in `src/data/orchestrators.ts` in sync with accepted README listings. Website changes should preserve existing entries and validate the rendered order, count, and relevant pages with the repository tests and build.
+
+For website development, a local preview is available with `npm install` followed by `npm run dev`. This is optional for README listing contributions.
 
 ## Copy and sourcing rules
 
 - Prefer official website, docs, and GitHub links.
 - Keep summaries to one short paragraph.
 - Keep the directory note to one sentence.
-- Prefer local fallback marks or local assets over hotlinking third-party icons into the page shell.
+- For website maintenance, prefer local fallback marks or local assets over hotlinking third-party icons into the page shell.
 - Do not add unverifiable claims, funding claims, or feature claims that are not obvious from public materials.
 
 ## Pull requests
