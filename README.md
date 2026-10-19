@@ -212,6 +212,8 @@ Before submitting a pull request, please star this repository.
 
 Pull requests are welcome if the project clearly fits the directory scope.
 
+- New submissions must have at least 10 stars on the project's public GitHub repository at review time and a functioning, dedicated project website on its own/custom domain. A GitHub-only presence (including a repository, README, or `github.io` site without a custom domain) does not qualify; include both links in the submission.
+- For closed-source products, an official public project, SDK, or integration repository may satisfy the star requirement; product source disclosure is not required. These requirements apply to new submissions and do not retroactively remove existing listings.
 - Listing submissions only need to add or update a bullet in the appropriate README category; new projects may also appear in Latest Additions.
 - Prefer official website, docs, and GitHub links.
 - Keep summaries factual, concise, and based on public sources.
