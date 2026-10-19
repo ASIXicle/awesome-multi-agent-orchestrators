@@ -297,14 +297,14 @@ export const orchestrationTools: OrchestrationToolEntry[] = [
   },
   {
     slug: "grove",
-    title: "Grove",
-    url: "https://github.com/efim0v/grove",
-    sourceName: "Grove GitHub repository and website",
-    mark: "Gr",
+    title: "Brow",
+    url: "https://github.com/efim0v/brow",
+    sourceName: "Brow GitHub repository and website (formerly Grove)",
+    mark: "Br",
     summary:
-      "GPL-3.0 macOS menu-bar app and CLI for running parallel Claude Code sessions on a multi-repo project, with one workspace per feature that holds a git worktree of each chosen repository on one branch.",
+      "GPL-3.0 macOS app combining Claude Code account-limit monitoring in the MacBook notch with parallel multi-repo workspaces, each holding a git worktree of every chosen repository on one branch.",
     note:
-      "Also shows Claude Code sessions across projects and accounts and moves a session to another Claude account; requires macOS 26+ on Apple silicon, builds are signed ad hoc and not notarized, and it is tracked as a session workspace rather than an orchestrator runtime.",
+      "Formerly Grove; its Workspaces engine is part of Brow from 0.4.0. Supports cross-account session continuation and shows 5-hour and weekly account limits; requires macOS 26+ on Apple silicon, and builds are signed ad hoc without notarization. Tracked as a session workspace rather than an orchestrator runtime.",
     tags: ["CLI sessions", "worktrees", "multi-repo", "Claude Code", "macOS", "GPL-3.0"]
   },
   {
